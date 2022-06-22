@@ -105,8 +105,8 @@ curl "https://openapi.naver.com/v1/search/image?query=%EC%A3%BC%EC%8B%9D&display
 val client = OkHttpClient.Builder()
     .addInterceptor { chain ->
         val request = chain.request().newBuilder()
-            .addHeader("X-Naver-Client-Id", "XXXX")
-            .addHeader("X-Naver-Client-Secret", "YYYY")
+            .addHeader("X-Naver-Client-Id", "r3lJZIigSX4_uJ8CJnS6")
+            .addHeader("X-Naver-Client-Secret", "_HeCGrZJGx")
             .build()
         chain.proceed(request)
     }

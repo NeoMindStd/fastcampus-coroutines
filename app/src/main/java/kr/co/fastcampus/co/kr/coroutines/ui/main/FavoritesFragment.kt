@@ -1,21 +1,22 @@
 package kr.co.fastcampus.co.kr.coroutines.ui.main
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import kr.co.fastcampus.co.kr.coroutines.R
+import kr.co.fastcampus.co.kr.coroutines.databinding.FragmentFavoritesBinding
 import kr.co.fastcampus.co.kr.coroutines.databinding.FragmentMainBinding
 
-class ImageSearchFragment : Fragment() {
-
+class FavoritesFragment : Fragment() {
     private lateinit var imageSearchViewModel: ImageSearchViewModel
-    private val adapter: ImageSearchAdapter = ImageSearchAdapter {
+    private val adapter: FavoritesAdapter = FavoritesAdapter {
         imageSearchViewModel.toggle(it)
     }
 
@@ -28,24 +29,16 @@ class ImageSearchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentMainBinding.inflate(inflater, container, false)
+        val binding = FragmentFavoritesBinding.inflate(inflater, container, false)
         val root = binding.root
 
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = GridLayoutManager(context, 4)
-        binding.search.setOnClickListener {
-            val query = binding.editText.text.trim().toString()
-            imageSearchViewModel.handleQuery(query)
-        }
 
-        // viewLifecycleOwner.lifecycleScope 는 view의 Life cycle을 따름
-        // lifecycleScope 는 fragment의 Life cycle을 따름
         viewLifecycleOwner.lifecycleScope.launch {
-            imageSearchViewModel
-                .pagingDataFlow
-                .collectLatest {
-                    adapter.submitData(it)
-                }
+            imageSearchViewModel.favoritesFlow.collectLatest {
+                adapter.items = it
+            }
         }
 
         return root

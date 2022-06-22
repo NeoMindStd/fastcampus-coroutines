@@ -15,7 +15,16 @@ class ImageSearchViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: Item?) {
-        TODO("이미지 불러오기를 구현해야합니다.")
+        item?.let {
+            Glide.with(binding.root)
+                .load(item.thumbnail)
+                .centerCrop()
+                .into(binding.imageView)
+
+            binding.imageView.setOnClickListener {
+                like.invoke(item)
+            }
+        }
     }
 
     companion object {

@@ -6,7 +6,8 @@ data class Item(
     val title: String,
     val link: String,
     val thumbnail: String,
+    @SerializedName("sizeheight")
     val sizeHeight: Int,
+    @SerializedName("sizewidth")
     val sizeWidth: Int
 )
-TODO("필드를 맞춰야 합니다.")
