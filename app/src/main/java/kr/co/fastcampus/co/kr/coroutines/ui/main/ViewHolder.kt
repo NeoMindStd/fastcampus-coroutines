@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import kr.co.fastcampus.co.kr.coroutines.R
 import kr.co.fastcampus.co.kr.coroutines.databinding.ImageSearchItemBinding
 import kr.co.fastcampus.co.kr.coroutines.model.Item

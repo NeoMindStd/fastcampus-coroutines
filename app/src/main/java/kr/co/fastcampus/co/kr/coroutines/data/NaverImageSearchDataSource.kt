@@ -4,7 +4,6 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import kr.co.fastcampus.co.kr.coroutines.api.NaverImageSearchService
 import kr.co.fastcampus.co.kr.coroutines.model.Item
-import java.lang.Exception
 
 class NaverImageSearchDataSource(
     private val query: String,

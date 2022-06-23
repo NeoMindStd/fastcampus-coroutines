@@ -1,8 +1,6 @@
 package kr.co.fastcampus.co.kr.coroutines.ui.main
 
 import android.view.ViewGroup
-import androidx.paging.PagingDataAdapter
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import kr.co.fastcampus.co.kr.coroutines.model.Item
 

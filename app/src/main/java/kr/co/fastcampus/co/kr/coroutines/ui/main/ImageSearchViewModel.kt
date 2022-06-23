@@ -11,6 +11,7 @@ import kr.co.fastcampus.co.kr.coroutines.model.Item
 
 class ImageSearchViewModel : ViewModel() {
     private val repository = NaverImageSearchRepository()
+
     // shared 는 핫스트림
     private val queryFlow = MutableSharedFlow<String>()
     private val favorites = mutableSetOf<Item>()
@@ -19,7 +20,7 @@ class ImageSearchViewModel : ViewModel() {
         get() = _favoritesFlow.asSharedFlow()
 
     val pagingDataFlow = queryFlow
-            // 사용자가 입력한 마지막값만 의미가 있으므로
+        // 사용자가 입력한 마지막값만 의미가 있으므로
         .flatMapLatest {
             searchImages(it)
         }
